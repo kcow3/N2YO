@@ -14,8 +14,7 @@ namespace Kcow3.N2YO.Cmd
         public static IConfigurationRoot Configuration { get; set; }
 
         static HttpClient client = new HttpClient();
-        private static readonly string apiKey = "Key Here";
-
+     
         static async Task Main(string[] args)
         {
             #region SecretSetup
@@ -50,9 +49,9 @@ namespace Kcow3.N2YO.Cmd
 
             //Console.WriteLine($"Key: {secretService.GetApiKey()}");
             
-            var req = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={apiKey}");
+            var req = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={secretService.GetApiKey()}");
 
-            HttpResponseMessage response = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={apiKey}");
+            HttpResponseMessage response = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={secretService.GetApiKey()}");
 
             if (response.IsSuccessStatusCode)
             {
