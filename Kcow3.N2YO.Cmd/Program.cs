@@ -1,5 +1,6 @@
 ﻿using Kcow3.N2YO.Cmd.Models;
 using Kcow3.N2YO.Cmd.Services;
+using Kcow3.N2YO.RemoteApiInterface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -47,15 +48,11 @@ namespace Kcow3.N2YO.Cmd
             var secretService = serviceProvider.GetService<ISecretService>();
             #endregion
 
-            Console.WriteLine($"Key: {secretService.GetApiKey()}");
+            var res = await N2YOHttpInstance.GetInstance.TestTleCall(secretService.GetApiKey());
 
-            var req = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={secretService.GetApiKey()}");
-
-            HttpResponseMessage response = await client.GetAsync($"https://www.n2yo.com/rest/v1/satellite/tle/25544&apiKey={secretService.GetApiKey()}");
-
-            if (response.IsSuccessStatusCode)
+            if (res.IsSuccessStatusCode)
             {
-                var tle = JsonConvert.DeserializeObject<TleResult>(await req.Content.ReadAsStringAsync());
+                var tle = JsonConvert.DeserializeObject<TleResult>(await res.Content.ReadAsStringAsync());
             }
         }
     }
