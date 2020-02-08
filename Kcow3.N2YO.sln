@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kcow3.N2YO.Cmd", "Kcow3.N2YO.Cmd\Kcow3.N2YO.Cmd.csproj", "{19DFB0CF-0A50-4CFB-86CA-0D3BDF6B469E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kcow3.N2YO.Api", "Kcow3.N2YO.Api\Kcow3.N2YO.Api.csproj", "{FE6CAC0A-06C9-4AE1-A4F2-587C8E53D100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kcow3.N2YO.Api", "Kcow3.N2YO.Api\Kcow3.N2YO.Api.csproj", "{FE6CAC0A-06C9-4AE1-A4F2-587C8E53D100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kcow3.N2YO.RemoteApiInterface", "Kcow3.N2YO.RemoteApiInterface\Kcow3.N2YO.RemoteApiInterface.csproj", "{AEFF1845-C1B1-4F70-B46D-92BA6B7CB2B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FE6CAC0A-06C9-4AE1-A4F2-587C8E53D100}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE6CAC0A-06C9-4AE1-A4F2-587C8E53D100}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE6CAC0A-06C9-4AE1-A4F2-587C8E53D100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFF1845-C1B1-4F70-B46D-92BA6B7CB2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFF1845-C1B1-4F70-B46D-92BA6B7CB2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFF1845-C1B1-4F70-B46D-92BA6B7CB2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFF1845-C1B1-4F70-B46D-92BA6B7CB2B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
