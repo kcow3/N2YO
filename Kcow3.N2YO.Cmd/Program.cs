@@ -48,12 +48,17 @@ namespace Kcow3.N2YO.Cmd
             var secretService = serviceProvider.GetService<ISecretService>();
             #endregion
 
-            var res = await N2YOHttpInstance.GetInstance.TestTleCall(secretService.GetApiKey());
+            var res = await N2YOHttpInstance.GetInstance.TestTleCall(secretService.GetApiKey(), "/satellite/tle/25544");
 
             if (res.IsSuccessStatusCode)
             {
                 var tle = JsonConvert.DeserializeObject<TleResult>(await res.Content.ReadAsStringAsync());
             }
+
+            var test = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<TleResult>(secretService.GetApiKey(), "/satellite/tle/25544");
+
+            Console.WriteLine(test.Tle);
+            Console.WriteLine($"{test.Info.SatId}  {test.Info.SatName}");
         }
     }
 }
