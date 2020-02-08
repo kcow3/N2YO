@@ -28,7 +28,6 @@ namespace Kcow3.N2YO.Api
         {
             services.AddControllers();
 
-
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -36,11 +35,8 @@ namespace Kcow3.N2YO.Api
             }).AddJwtBearer(options =>
             {
                 options.Authority = "https://kcow3.auth0.com/";
-                options.Audience = "https://localhost:44384/weatherforecast";
+                options.Audience = "https://kcow3-n2yo-api.co.za";
             });
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,9 +53,7 @@ namespace Kcow3.N2YO.Api
 
             app.UseAuthorization();
 
-
             app.UseAuthentication();
-
 
             app.UseEndpoints(endpoints =>
             {
