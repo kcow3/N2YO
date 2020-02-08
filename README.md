@@ -20,7 +20,7 @@ A list of projects within the solution can be found below:
 |Project|Discription|
 |--|--|
 |Kcow3.N2YO.Api  | In this project, various methods will be exposed to return formatted data from the [N2YO](https://www.n2yo.com/) API. The API is protected using the [Auth0](https://auth0.com/) authentication provider. |
-|Kcow3.N2YO.Cmd|This is a console application that will primerily be used for debugging|
+|Kcow3.N2YO.Cmd|This is a console application that will primerily be used for debugging. The CMD project uses User Secrets to store API connection strings locally. Manage User Secrets by Right Clicking on the CMD project in Visual Studio and selecting Manage User Secrets|
 
 # Useful information and resources
 
