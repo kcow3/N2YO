@@ -9,7 +9,6 @@ namespace Kcow3.N2YO.RemoteApiInterface
     {
         private N2YOHttpInstance() { client = new HttpClient(); }
         private HttpClient client = null;
-        private readonly string baseUrl = "https://www.n2yo.com/rest/v1/";
 
         public static N2YOHttpInstance instance = null;
         public static readonly object _lock = new object();
@@ -29,20 +28,17 @@ namespace Kcow3.N2YO.RemoteApiInterface
             }
         }
 
-        public async Task<HttpResponseMessage> TestTleCall(string apiKey, string method)
-        {
-            return await client.GetAsync($"{baseUrl}{method}&apiKey={apiKey}");
-        }
-
-        public async Task<T> PerformGetAndConvertToObj<T>(string apiKey, string method)
+        public async Task<T> PerformGetAndConvertToObj<T>(string apiKey, string url)
         {
             try
             {
-                var result = await client.GetAsync($"{baseUrl}{method}&apiKey={apiKey}");
+                var result = await client.GetAsync($"{url}&apiKey={apiKey}");
 
                 if (result.IsSuccessStatusCode)
                 {
-                    return JsonConvert.DeserializeObject<T>(await result.Content.ReadAsStringAsync());
+                    var resultString = await result.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<T>(resultString);
                 }
 
                 return (T)Activator.CreateInstance(typeof(T));

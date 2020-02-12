@@ -1,9 +1,9 @@
 ﻿using Kcow3.N2YO.Cmd.Models;
 using Kcow3.N2YO.Cmd.Services;
 using Kcow3.N2YO.RemoteApiInterface;
+using Kcow3.N2YO.StaticData;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -48,17 +48,19 @@ namespace Kcow3.N2YO.Cmd
             var secretService = serviceProvider.GetService<ISecretService>();
             #endregion
 
-            var res = await N2YOHttpInstance.GetInstance.TestTleCall(secretService.GetApiKey(), "/satellite/tle/25544");
+            // TLE
+            var tle = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<TleResult>(secretService.GetApiKey(), Constants.BuildTleRequest(25544));
+            Console.WriteLine(tle.Tle);
+            Console.WriteLine($"{tle.Info.SatId}  {tle.Info.SatName}");
 
-            if (res.IsSuccessStatusCode)
-            {
-                var tle = JsonConvert.DeserializeObject<TleResult>(await res.Content.ReadAsStringAsync());
-            }
+            // Get Satellite positions
+            var satellitePositions = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<SatellitePositionsResult>(secretService.GetApiKey(), Constants.BuildSatellitePositionsRequest(25544, 41.702, -76.014,0,2));
 
-            var test = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<TleResult>(secretService.GetApiKey(), "/satellite/tle/25544");
+            //var getVisualPasses = 
 
-            Console.WriteLine(test.Tle);
-            Console.WriteLine($"{test.Info.SatId}  {test.Info.SatName}");
+            //var getRadioPasses = 
+
+
         }
     }
 }
