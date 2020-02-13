@@ -3,5 +3,7 @@
     public interface ISecretService
     {
         string GetApiKey();
+        double GetObserverLng();
+        double GetObserverLat();
     }
 }
