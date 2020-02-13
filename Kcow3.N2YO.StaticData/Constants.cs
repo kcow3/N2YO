@@ -6,6 +6,7 @@
         public static string TleEndpoint { get; } = "satellite/tle/";
         public static string SatellitePositionsEndpoint { get; } = "satellite/positions/";
         public static string VisualPassesEndpoint { get; } = "satellite/visualpasses/";
+        public static string RadioPassesEndpoint { get; } = "satellite/radiopasses/";
 
         /// <summary>
         /// Builds request to fetch TLE of given satellite
@@ -67,7 +68,7 @@
         /// <returns></returns>
         public static string BuildRadioPassesRequest(int id, double observer_lat, double obeserver_lng, double observer_alt, int days, int min_elevation)
         {
-            return $"{N2YOBaseEndpoint}{VisualPassesEndpoint}{id}/" +
+            return $"{N2YOBaseEndpoint}{RadioPassesEndpoint}{id}/" +
                 $"{observer_lat.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture)}/" +
                 $"{obeserver_lng.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture)}/" +
                 $"{observer_alt.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture)}/" +
