@@ -1,4 +1,6 @@
-﻿namespace Kcow3.N2YO.Cmd.Models
+﻿using System;
+
+namespace Kcow3.N2YO.Cmd.Models
 {
     // The N2YO Model definition
     // --------------------------------------------------------------------------------------------------------------------
@@ -19,11 +21,19 @@
     // endAzCompass	        string	    Satellite azimuth for the end of this pass (relative to the observer). Possible values: N, NE, E, SE, S, SW, W, NW
     // endUTC               integer     Unix time for the end of this pass. You should convert this UTC value to observer's time zone
     // --------------------------------------------------------------------------------------------------------------------
-    public class RadioPass 
+    public class RadioPass
     {
         public float StartAz { get; set; }
         public string StartAzCompass { get; set; }
         public int StartUTC { get; set; }
+        public DateTime StartDate
+        {
+            get
+            {
+                return new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)
+                    .AddSeconds(StartUTC).ToLocalTime();
+            }
+        }
         public float MaxAz { get; set; }
         public string MaxAzCompass { get; set; }
         public float MaxEl { get; set; }
@@ -31,5 +41,13 @@
         public float EndAz { get; set; }
         public string EndAzCompass { get; set; }
         public int EndUTC { get; set; }
+        public DateTime EndDate
+        {
+            get
+            {
+                return new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)
+                    .AddSeconds(EndUTC).ToLocalTime();
+            }
+        }
     }
 }

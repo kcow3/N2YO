@@ -48,19 +48,15 @@ namespace Kcow3.N2YO.Cmd
             var secretService = serviceProvider.GetService<ISecretService>();
             #endregion
 
-            // TLE
             var tle = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<TleResult>(secretService.GetApiKey(), Constants.BuildTleRequest(25544));
-            Console.WriteLine(tle.Tle);
-            Console.WriteLine($"{tle.Info.SatId}  {tle.Info.SatName}");
 
-            // Get Satellite positions
-            var satellitePositions = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<SatellitePositionsResult>(secretService.GetApiKey(), Constants.BuildSatellitePositionsRequest(25544, 41.702, -76.014,0,2));
+            var satellitePositions = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<SatellitePositionsResult>(secretService.GetApiKey(), Constants.BuildSatellitePositionsRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(), 1379, 30));
 
-            //var getVisualPasses = 
+            var getVisualPasses = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<VisualPassesResult>(secretService.GetApiKey(), Constants.BuildVisualPassesRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(), 1379, 10, 30));
 
-            //var getRadioPasses = 
+            var getRadioPasses = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<RadioPassesResult>(secretService.GetApiKey(), Constants.BuildRadioPassesRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(),1379, 10, 30));
 
-
+            Console.WriteLine("");
         }
     }
 }

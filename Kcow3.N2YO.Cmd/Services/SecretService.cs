@@ -17,5 +17,15 @@ namespace Kcow3.N2YO.Cmd.Services
         {
             return _secret.ApiKey;
         }
+
+        public double GetObserverLng()
+        {
+            return _secret.ObserverLng;
+        }
+
+        public double GetObserverLat()
+        {
+            return _secret.ObserverLat;
+        }
     }
 }

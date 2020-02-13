@@ -3,6 +3,7 @@
     public class Secret
     {
         public string ApiKey { get; set; }
-        //todo: define more here
+        public double ObserverLng { get; set; }
+        public double ObserverLat { get; set; }
     }
 }
