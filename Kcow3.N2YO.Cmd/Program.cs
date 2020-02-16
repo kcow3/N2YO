@@ -1,7 +1,7 @@
-﻿using Kcow3.N2YO.Cmd.Models;
-using Kcow3.N2YO.Cmd.Services;
+﻿using Kcow3.N2YO.Cmd.Services;
 using Kcow3.N2YO.RemoteApiInterface;
 using Kcow3.N2YO.StaticData;
+using Kcow3.N2YO.TransData.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -54,7 +54,7 @@ namespace Kcow3.N2YO.Cmd
 
             var getVisualPasses = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<VisualPassesResult>(secretService.GetApiKey(), Constants.BuildVisualPassesRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(), 1379, 10, 30));
 
-            var getRadioPasses = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<RadioPassesResult>(secretService.GetApiKey(), Constants.BuildRadioPassesRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(),1379, 10, 30));
+            var getRadioPasses = await N2YOHttpInstance.GetInstance.PerformGetAndConvertToObj<RadioPassesResult>(secretService.GetApiKey(), Constants.BuildRadioPassesRequest(25544, secretService.GetObserverLat(), secretService.GetObserverLng(), 1379, 10, 30));
 
             Console.WriteLine("");
         }
