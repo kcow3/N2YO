@@ -1,4 +1,4 @@
-﻿namespace Kcow3.N2YO.Cmd.Models
+﻿namespace Kcow3.N2YO.TransData.Models
 {
     // The N2YO Model definition
     // --------------------------------------------------------------------------------------------------------------------

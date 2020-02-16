@@ -18,5 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Kcow3.N2YO.RemoteApiInterface\Kcow3.N2YO.RemoteApiInterface.csproj" />
     <ProjectReference Include="..\Kcow3.N2YO.StaticData\Kcow3.N2YO.StaticData.csproj" />
+    <ProjectReference Include="..\Kcow3.N2YO.TransData\Kcow3.N2YO.TransData.csproj" />
   </ItemGroup>
 </Project>
